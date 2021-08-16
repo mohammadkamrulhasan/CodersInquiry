@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AskQuestion.css';
 import { useForm } from 'react-hook-form';
 import Navbar from '../Navbar/Navbar';
@@ -10,14 +10,51 @@ const AskQuestion = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+    // base 64
+    const [file, setFile] = useState("")
+    let base64String = "";
+    function handleFileChange() {
+        var file = document.querySelector(
+            'input[type=file]')['files'][0];
+      
+        var reader = new FileReader();
+        console.log("next");
+          
+        reader.onload = function () {
+            base64String = reader.result.replace("data:", "")
+                .replace(/^.+,/, "");
+            // console.log(base64String);
+            setFile(base64String);
+        }
+        reader.readAsDataURL(file);
+    }
     const onSubmit = (data) => {
-        console.log(data);
+        const {title, description, tags} = data;
+        const newQuestionData = {
+            title,
+            description,
+            tags,
+            // file,
+        }
+        fetch('http://localhost:5000/addQuestion',{
+          method:'POST',
+          headers: { 
+            "Content-Type": "application/json",
+            'Accept': 'application/json, text/plain, */*',
+          },
+          body: JSON.stringify(newQuestionData)
+        })
+        .then(res => res.json())
+        .then(success =>{
+            console.log(success);
+            alert("successfully entry");
+        })
+        console.log(newQuestionData);
     };
 
     // const onChange = (value) => {
     //     console.log("Captcha value:", value);
     //   }
-
     return (
         <div className='askQuestion'>
             <Navbar />
@@ -44,13 +81,13 @@ const AskQuestion = () => {
                                 <label for='askQuestionImg' class='form-label'>
                                     ছবি/স্ক্রিনশট যুক্ত করুন
                                 </label>
-                                <input class='form-control' type='file' id='askQuestionImg' multiple />
+                                <input class='form-control' type='file' id='askQuestionImg' name="askQuestionImg" {...register("askQuestionImg")} onChange={handleFileChange} multiple />
                             </div>
                             <div className='mb-3'>
                                 <label for='askQuestionTags' className='form-label'>
                                     ট্যাগ
                                 </label>
-                                <input type='text' className='form-control' id='askQuestionTags' placeholder='প্রশ্ন/সমস্যার ট্যাগ যুক্ত করুন...' {...register('tags', { required: true })} />
+                                <input type='text' className='form-control' name="tags" id='askQuestionTags' placeholder='প্রশ্ন/সমস্যার ট্যাগ যুক্ত করুন...' {...register('tags', { required: true })} />
                                 {errors.tags && <span className='text-danger'>প্রশ্ন/সমস্যার ট্যাগ যুক্ত করা আবশ্যক</span>}
                             </div>
                             {/* <ReCAPTCHA
