@@ -60,26 +60,26 @@ const RegistrationForm = () => {
     const onSubmit = async (data, e) => {
         e.preventDefault();
         setError(false);
-        const user ={
-            ...data
-        }
-        try{
-          fetch('https://fierce-hollows-24915.herokuapp.com/users',{
-            method:"POST",
-            headers: { 
-                "Content-Type": "application/json" 
-            },
-            body: JSON.stringify(user)
+        const user = {
+            ...data,
+        };
+        try {
+            fetch('https://fierce-hollows-24915.herokuapp.com/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
             })
-            .then(res => res.json())
-            .then(data =>{
-                if(data){
-                    alert("Your Registration Successfully Done!");
-                }
-            })
-        }catch(err){
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data) {
+                        alert('Your Registration Successfully Done!');
+                    }
+                });
+        } catch (err) {
             setError(true);
-            console.log(error)
+            console.log(error);
         }
         setValues(data);
         history.push('/login');

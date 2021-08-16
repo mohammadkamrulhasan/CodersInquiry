@@ -12,11 +12,12 @@ import TopLearners from './components/TopLearners/TopLearners';
 import AskQuestion from './components/AskQuestion/AskQuestion';
 import CourseDetails from './components/Courses/CourseDetails';
 import Footer from './components/Footer/Footer';
-// import WriteArticle from './components/WriteArticle/WriteArticle';
 import Questions from './components/Questions/Questions';
 import QuestionDetail from './components/QuestionDetail/QuestionDetail';
 import Article from './components/Article/Article';
 import WriteArticle from './components/WriteArticle/WriteArticle';
+import Authentication from './components/Authentication/Authentication';
+import UserProfile from './components/User/UserProfile';
 import AdminBoard from './components/AdminBoard/AdminBoard';
 import UserList from './components/AdminBoard/Users/UserList';
 
@@ -38,6 +39,14 @@ const App = () => {
                     <Login />
                     {/* <RegistrationForm /> */}
                 </Route>
+                <Route path='/register'>
+                    <Navbar />
+                    <RegistrationForm />
+                </Route>
+                <Route path='/authentication'>
+                    <Navbar />
+                    <Authentication />
+                </Route>
                 <Route path='/askQuestion'>
                     <AskQuestion />
                 </Route>
@@ -49,10 +58,6 @@ const App = () => {
                 <Route path='/writeArticle'>
                     <WriteArticle />
                     {/* <Article /> */}
-                </Route>
-                <Route path='/register'>
-                    <Navbar />
-                    <RegistrationForm />
                 </Route>
                 <Route path='/courses'>
                     <Navbar />

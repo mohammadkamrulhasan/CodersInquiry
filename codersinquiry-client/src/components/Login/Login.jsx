@@ -7,34 +7,31 @@ import Input from './formComponents/Input';
 import MainContainer from './formComponents/MainContainer';
 import PrimaryButton from './formComponents/PrimaryButton';
 import './Login.css';
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useEffect } from 'react';
 
 const schema = yup.object().shape({
-    email: yup
-        .string()
-        .email("Email should have correct format")
-        .required("Email is a require field"),
+    email: yup.string().email('Email should have correct format').required('Email is a require field'),
     password: yup
         .string()
         .required('Please Enter your password')
-        .matches(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-        ),
-    
+        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, 'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'),
 });
 const Login = () => {
     const [data, setValues] = useState({});
     const [error, setError] = useState(false);
     const history = useHistory();
-    const {register, handleSubmit, formState:{ errors }} = useForm({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
         defaultValues: {
             email: data.email,
             password: data.password,
         },
-        mode: "onBlur",
+        mode: 'onBlur',
         resolver: yupResolver(schema),
     });
     const onSubmit =(data, e )=>{
@@ -55,7 +52,7 @@ const Login = () => {
     }
    
     return (
-        <MainContainer className="login_container">
+        <MainContainer className='login_container'>
             <Typography>Login Now</Typography>
             <Form onSubmit={handleSubmit(onSubmit)}>
             <Input 
@@ -79,7 +76,9 @@ const Login = () => {
                 /> 
                 <PrimaryButton>Login</PrimaryButton>
             </Form>
-            <Link to="/register">Have no account?<span style= {{color:"red"}}>register now</span></Link>
+            <Link to='/register'>
+                Have no account?<span style={{ color: 'red' }}>register now</span>
+            </Link>
         </MainContainer>
     );
 };

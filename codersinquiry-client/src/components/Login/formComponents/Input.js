@@ -12,7 +12,6 @@ const Input = forwardRef((props, ref) => {
     return (
         <TextField 
             className={styles.root}
-            variant="outlined"
             margin="normal"
             ref={ref}
             fullWidth

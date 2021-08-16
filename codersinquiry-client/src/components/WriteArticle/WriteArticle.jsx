@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
-import ReCAPTCHA from "react-google-recaptcha";
-import WriteArticleImage from '../../images/write_article1.png';
+// import ReCAPTCHA from "react-google-recaptcha";
+// import WriteArticleImage from '../../images/write_article1.png';
 import './WriteArticle.css';
 
 const WriteArticle = () => {
@@ -17,8 +17,8 @@ const WriteArticle = () => {
     };
 
     function onChange(value) {
-        console.log("Captcha value:", value);
-      }
+        console.log('Captcha value:', value);
+    }
 
     return (
         <div className='writeArticle'>
@@ -27,7 +27,7 @@ const WriteArticle = () => {
                 <h2 className='writeArticle__head fw-bold my-3'>Write an Article</h2>
                 <div className='row my-3'>
                     <div className='col-md-9 mb-3'>
-                    <form onSubmit={handleSubmit(onSubmit)} className='card p-3'>
+                        <form onSubmit={handleSubmit(onSubmit)} className='card p-3'>
                             <div className='mb-3'>
                                 <label for='writeArticleTitle' className='form-label'>
                                     শিরোনাম
@@ -55,11 +55,13 @@ const WriteArticle = () => {
                                 <input type='text' className='form-control' id='writeArticleTags' placeholder='প্রবন্ধের ট্যাগ যুক্ত করুন...' {...register('tags', { required: true })} />
                                 {errors.tags && <span className='text-danger'>প্রবন্ধের ট্যাগ যুক্ত করা আবশ্যক</span>}
                             </div>
-                            <button type="submit" class="btn writeArticle__btn">Publish your Article</button>
+                            <button type='submit' class='btn writeArticle__btn'>
+                                Publish your Article
+                            </button>
                         </form>
                     </div>
                     <div className='col-md-3 mb-3'>
-                        <div className="card p-3">
+                        <div className='card p-3'>
                             <h4>কীভাবে একটি সুন্দর আর্টিকেল লেখা যায়?</h4>
                         </div>
                     </div>

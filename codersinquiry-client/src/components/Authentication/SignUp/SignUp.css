@@ -1,0 +1,4 @@
+.signUp__socialPlatform {
+    display: flex;
+    flex-direction: column;
+}
