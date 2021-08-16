@@ -1,13 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import javaScript from './javaScript/javaScript';
+import JS from './JavaScript/JS';
+
+
 
 const CourseDetails = () => {
   const {courseId} = useParams();
    
 const courseComponent = () => {
   if(courseId === '1'){
-    return (<javaScript/>)
+    return (<JS/>)
   }
   else if(courseId === '2'){
     return 
