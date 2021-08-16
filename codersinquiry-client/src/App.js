@@ -23,7 +23,7 @@ import UserList from './components/AdminBoard/Users/UserList';
 const App = () => {
     return (
         <Router>
-            <CustomNavbar />
+            <CustomNavbar/>
             <Switch>
                 <Route exact path='/'>
                     {/* customNavbar just for testing purpose */}

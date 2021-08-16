@@ -1,9 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import AskQuestion from '../AskQuestion/AskQuestion';
-import "@testing-library/jest-dom/extend-expect";
 import Banner from '../Banner/Banner';
 import Main from '../Home/Main/Main';
+import "@testing-library/jest-dom/extend-expect";
+
 
 
 test("Question features render with text", () => {

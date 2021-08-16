@@ -37,21 +37,21 @@ const CustomNavbar = () => {
     return (
         <div>
             <div className='custom-navbar-container' >
-                <h1 data-testid="header">Home component</h1>
+                {/* <h1 data-testid="header">Home component</h1> */}
                 {' '}
                 <button onClick={openModal} style={{border: 'none'}}>
                 {/* <img src={navbar} alt="" style={{width: '70px'}}/> */}
                 <CgMenu style={{ width: '60px', height: '50px'}}/>
                 </button>
             </div>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel='Example Modal'>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} >
                 <div style={{ float: 'left', paddingBottom: '40px', paddingTop: '0' }}>
                     <button onClick={closeModal} style={{ border: 'none'}}>
-                        <img src={times} alt="" style={{width: '45px', border: 'none'}} />
+                        <img src={times} alt="" style={{width: '45px', border: 'none', color: 'blue'}} />
                     </button>
                 </div>
                 <div style={{ marginTop: '50px' }}>
-                    <form>
+                     <div>
                         <Link to='/' className='text-decorations'>
                             <li className='common-feature'>Home</li>
                         </Link>
@@ -74,7 +74,7 @@ const CustomNavbar = () => {
                             <Link to="/login" className='common-feature'>LogIn</Link>
                             <Link to="/register" className='common-feature'>Register</Link>
                         </Link>
-                    </form>
+                 </div>
                 </div>
             </Modal>
         </div>
