@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 const JS = () => {
     const [javascript, setJavascript] = useState([])
 
@@ -12,9 +12,14 @@ const JS = () => {
     }, [])
 
     return (
-        <div>
-            <h4>This is js part</h4>
-        </div>
+        <main>
+            <section>
+               {/* Sidebar */}
+           </section>  
+           <section>
+              {/* Main content with all component */}
+           </section>
+        </main>
     );
 };
 

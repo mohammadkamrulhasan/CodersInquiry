@@ -66,7 +66,7 @@ const App = () => {
                 </Route>
                 <Route path='/courseDetails/:courseId'>
                     <Navbar />
-                    <CourseDetails />
+                    {/* <CourseDetails /> */}
                     <Footer />
                 </Route>
                 <Route path='/blogs'>
