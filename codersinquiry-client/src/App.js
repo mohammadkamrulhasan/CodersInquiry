@@ -24,7 +24,7 @@ import UserList from './components/AdminBoard/Users/UserList';
 const App = () => {
     return (
         <Router>
-            <CustomNavbar />
+            <CustomNavbar/>
             <Switch>
                 <Route exact path='/'>
                     {/* customNavbar just for testing purpose */}
@@ -66,7 +66,7 @@ const App = () => {
                 </Route>
                 <Route path='/courseDetails/:courseId'>
                     <Navbar />
-                    <CourseDetails />
+                    {/* <CourseDetails /> */}
                     <Footer />
                 </Route>
                 <Route path='/blogs'>
