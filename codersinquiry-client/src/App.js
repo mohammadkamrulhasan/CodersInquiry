@@ -83,6 +83,11 @@ const App = () => {
                 <Route path="/users">
                     <UserList />
                 </Route>
+                <Route path="/user/profile">
+                    <Navbar />
+                    <UserProfile />
+                    <Footer />
+                </Route>
             </Switch>
         </Router>
     );
