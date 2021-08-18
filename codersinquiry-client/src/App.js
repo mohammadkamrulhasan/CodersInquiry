@@ -66,7 +66,7 @@ const App = () => {
                 </Route>
                 <Route path='/courseDetails/:courseId'>
                     <Navbar />
-                    <CourseDetails />
+                    {/* <CourseDetails /> */}
                     <Footer />
                 </Route>
                 <Route path='/blogs'>
@@ -82,6 +82,11 @@ const App = () => {
                 </Route>
                 <Route path="/users">
                     <UserList />
+                </Route>
+                <Route path="/user/profile">
+                    <Navbar />
+                    <UserProfile />
+                    <Footer />
                 </Route>
             </Switch>
         </Router>
