@@ -2,8 +2,10 @@ import React from 'react';
 import './Question.css';
 import { Link } from 'react-router-dom';
 import userImg from '../../../images/userImg.jpg';
+import { useEffect } from 'react';
 
 const Question = () => {
+
     return (
         <div className='question'>
             <div className='question__row row'>

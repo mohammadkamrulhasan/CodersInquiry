@@ -55,6 +55,11 @@ const AskQuestion = () => {
     // const onChange = (value) => {
     //     console.log("Captcha value:", value);
     //   }
+
+    const selectedTags = (tags) => {
+        console.log(tags);
+    }
+
     return (
         <div className='askQuestion'>
             <Navbar />
@@ -88,6 +93,7 @@ const AskQuestion = () => {
                                     ট্যাগ
                                 </label>
                                 <input type='text' className='form-control' name="tags" id='askQuestionTags' placeholder='প্রশ্ন/সমস্যার ট্যাগ যুক্ত করুন...' {...register('tags', { required: true })} />
+                                {/* <TagsInput selectedTags={selectedTags} tags={["Node JS", "Mongoose"]}/> */}
                                 {errors.tags && <span className='text-danger'>প্রশ্ন/সমস্যার ট্যাগ যুক্ত করা আবশ্যক</span>}
                             </div>
                             {/* <ReCAPTCHA
