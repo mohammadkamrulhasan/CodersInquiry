@@ -36,7 +36,7 @@ const AskQuestion = () => {
             tags,
             // file,
         }
-        fetch('http://localhost:5000/addQuestion',{
+        fetch('https://fierce-hollows-24915.herokuapp.com/addQuestion',{
           method:'POST',
           headers: { 
             "Content-Type": "application/json",
