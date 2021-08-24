@@ -59,12 +59,12 @@ const SignUp = () => {
                     </button>
                 </div>
             </form>
-            <p className='text-center my-3'>or</p>
+            {/* <p className='text-center my-3'>or</p>
             <div className='signUp__socialPlatform px-5'>
                 <button className='btn border rounded-pill mb-2'>Sign Up with Google</button>
                 <button className='btn border rounded-pill mb-2'>Sign Up with Facebook</button>
                 <button className='btn border rounded-pill mb-2'>Sign Up with Github</button>
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -1,11 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Authentication.css';
+import { UserContext } from '../../App';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { useHistory, useLocation } from 'react-router-dom';
+import { firebaseConfig } from '../../firebase.config';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 import SignUpImg from '../../images/SignUpImg.png';
+import { FaGoogle, FaFacebookF, FaGithubAlt } from 'react-icons/fa';
 import Footer from '../Footer/Footer';
 
 const Authentication = () => {
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: '/' } };
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const handleGoogleSignIn = () => {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(provider)
+            .then((result) => {
+                const { displayName, email, photoURL } = result.user;
+                const signedInUser = {
+                    isSignedIn: true,
+                    name: displayName,
+                    email: email,
+                    photo: photoURL,
+                };
+                setLoggedInUser(signedInUser);
+                history.replace(from);
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    };
+    const handleFacebookSignIn = () => {
+        console.log('object');
+    };
+    const handleGithubSignIn = () => {
+        console.log('click');
+    };
     return (
         <div className='authentication'>
             <div className='container'>
@@ -34,6 +73,12 @@ const Authentication = () => {
                                 <div class='tab-pane fade' id='pills-signIn' role='tabpanel' aria-labelledby='pills-signIn-tab'>
                                     <SignIn />
                                 </div>
+                            </div>
+                            <p className='text-center my-3'>or</p>
+                            <div className='authentication__setOfIcon text-center'>
+                                <FaGoogle className='authentication__icon' onClick={handleGoogleSignIn} />
+                                <FaFacebookF className='authentication__icon' onClick={handleFacebookSignIn} />
+                                <FaGithubAlt className='authentication__icon' onClick={handleGithubSignIn} />
                             </div>
                         </div>
                     </div>

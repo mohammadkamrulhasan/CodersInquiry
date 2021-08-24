@@ -1,3 +1,18 @@
 .authentication .card {
     border-radius: 12px;
 }
+
+.authentication__icon {
+    height: 35px;
+    width: 35px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.authentication__icon:hover {
+    color: #f8f9fa;
+    background-color: #4361ee;
+}

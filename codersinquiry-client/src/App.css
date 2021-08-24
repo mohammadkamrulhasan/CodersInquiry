@@ -4,12 +4,14 @@
 
 /*** Bengali Font ***/
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
+@import url('https://fonts.maateen.me/kalpurush/font.css');
 
+/*** Universal Style ***/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Kalpurush', sans-serif;
 }
 
 p {
