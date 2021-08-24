@@ -5,6 +5,7 @@ import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 // import ReCAPTCHA from "react-google-recaptcha";
+
 const AskQuestion = () => {
     const { register, handleSubmit, formState: { errors } } = useForm(); // react-hook-form
     const [imageURL, setImageURL] = useState(null); // imgbb
