@@ -53,7 +53,7 @@ const AskQuestion = () => {
     // };
 
     const onSubmit = data => {
-        const newQuestionData = { title: data.title, description: data.description, tags: [ data.tags ], imageURL: [ imageURL ] };
+        const newQuestionData = { title: data.title, description: data.description, tags: data.tags, imageURL: imageURL };
         console.log(newQuestionData);
         fetch('http://localhost:5000/addQuestion', {
             method: 'POST', 
