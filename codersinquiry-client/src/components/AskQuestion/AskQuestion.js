@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './AskQuestion.css';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import { UserContext } from '../../App';
 // import ReCAPTCHA from "react-google-recaptcha";
 
 const AskQuestion = () => {
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm(); // react-hook-form
     const [imageURL, setImageURL] = useState(null); // imgbb
 
@@ -53,7 +55,7 @@ const AskQuestion = () => {
     // };
 
     const onSubmit = data => {
-        const newQuestionData = { title: data.title, description: data.description, tags: data.tags, imageURL: imageURL };
+        const newQuestionData = { title: data.title, description: data.description, tags: [ data.tags ], imageURL: [ imageURL ], answer: [ data.answer], vote: 0, answer: 0, views: 0, dateAndTime: new Date(), userInfo: loggedInUser };
         console.log(newQuestionData);
         fetch('http://localhost:5000/addQuestion', {
             method: 'POST', 

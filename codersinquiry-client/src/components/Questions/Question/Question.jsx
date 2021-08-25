@@ -2,10 +2,10 @@ import React from 'react';
 import './Question.css';
 import { Link } from 'react-router-dom';
 import userImg from '../../../images/userImg.jpg';
-import { useEffect } from 'react';
 
-const Question = () => {
-
+const Question = (props) => {
+    console.log(props);
+    const {title, description, iamges, tags, dateAndTime, userInfo} = props.question;
     return (
         <div className='question'>
             <div className='question__row row'>
@@ -38,7 +38,7 @@ const Question = () => {
                 </div>
                 <div className='question__col col-md-9'>
                     <div className='question__card'>
-                        <Link to='/questionDetails' className='question__question'>আমি প্রোগ্রামিং শিখতে চাই। প্রথমে কোন ল্যাঙ্গুয়েজ দিয়ে শুরু করা উচিত?</Link>
+                        <Link to='/questionDetails' className='question__question'>{title}</Link>
                         <div className="question__tags">
                             <ul>
                                 <li>Beginner</li>
@@ -48,10 +48,10 @@ const Question = () => {
                         </div>
                         <div className="question__user">
                             <div className='question__userAbout'>
-                                <Link to='/' className='question__userName'>Mustaque Nadim</Link>
-                                <p className='question__askingTime'>31 July 2021, 4:56 PM</p>
+                                <Link to='/' className='question__userName'>{userInfo?.name}</Link>
+                                <p className='question__askingTime'>{dateAndTime}</p>
                             </div>
-                            <Link to='/'><img src={userImg} alt="user_profile_img" className="question__userImg" /></Link>
+                            <Link to='/'><img src={userInfo?.photo} alt="user_profile_img" className="question__userImg" /></Link>
                         </div>
                     </div>
                 </div>

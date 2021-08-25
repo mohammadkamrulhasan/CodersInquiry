@@ -6,9 +6,10 @@ import Question from './Question/Question';
 const Questions = () => {
     const [questions, setQuestions] = useState([]);
     useEffect(() => {
-        fetch('https://apple-shortcake-30747.herokuapp.com/books')
+        fetch('http://localhost:5000/questions')
             .then((res) => res.json())
             .then((data) => {
+                console.log(data);
                 setQuestions(data);
             });
     }, []);
@@ -51,11 +52,10 @@ const Questions = () => {
                     </div>
                 </div>
             </div>
-            <Question />
-            <Question />
-            <Question />
-            <Question />
-            <Question />
+
+            {questions.map((question) => {
+                return <Question key={question._id} question={question} />;
+            })}
         </div>
     );
 };

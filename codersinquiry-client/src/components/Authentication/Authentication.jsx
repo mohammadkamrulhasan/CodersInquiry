@@ -25,13 +25,15 @@ const Authentication = () => {
             .auth()
             .signInWithPopup(provider)
             .then((result) => {
-                const { displayName, email, photoURL } = result.user;
+                const { displayName, email, photoURL, uid } = result.user;
                 const signedInUser = {
                     isSignedIn: true,
                     name: displayName,
                     email: email,
                     photo: photoURL,
+                    uniqueID: uid
                 };
+                console.log(result);
                 setLoggedInUser(signedInUser);
                 history.replace(from);
             })
@@ -45,6 +47,7 @@ const Authentication = () => {
     const handleGithubSignIn = () => {
         console.log('click');
     };
+    console.log(loggedInUser);
     return (
         <div className='authentication'>
             <div className='container'>
