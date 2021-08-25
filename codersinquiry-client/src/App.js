@@ -5,11 +5,9 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import RegistrationForm from './components/Login/RegistrationForm';
-// import Courses from './components/Courses/Courses';
 import Blog from './components/Blog/Blog';
 import TopLearners from './components/TopLearners/TopLearners';
 import AskQuestion from './components/AskQuestion/AskQuestion';
-// import CourseDetails from './components/Courses/CourseDetails';
 import Footer from './components/Footer/Footer';
 import Questions from './components/Questions/Questions';
 import QuestionDetails from './components/QuestionDetails/QuestionDetails';
@@ -20,7 +18,6 @@ import UserProfile from './components/User/UserProfile';
 import AdminBoard from './components/AdminBoard/AdminBoard';
 import UserList from './components/AdminBoard/Users/UserList';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import ResponsiveNavbar from './components/ResponsiveNavbar/ResponsiveNavbar';
 
 export const UserContext = createContext();
 
@@ -29,7 +26,6 @@ const App = () => {
     return (
         <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
             <Router>
-                {/* <ResponsiveNavbar /> */}
                 <Switch>
                     <Route exact path='/'>
                         <Home />
@@ -60,18 +56,12 @@ const App = () => {
                     </Route>
                     <PrivateRoute path='/writeArticle'>
                         <WriteArticle />
-                        {/* <Article /> */}
                     </PrivateRoute>
-                    {/* <Route path='/courses'>
-                    <Navbar />
-                    <Courses />
-                    <Footer />
-                </Route> */}
-                    {/* <Route path='/courseDetails/:courseId'>
-                    <Navbar />
-                    <CourseDetails />
-                    <Footer />
-                </Route> */}
+                    <Route path='/articles'>
+                        <Navbar />
+                        <Article />
+                        <Footer />
+                    </Route>
                     <Route path='/blogs'>
                         <Navbar />
                         <Blog />

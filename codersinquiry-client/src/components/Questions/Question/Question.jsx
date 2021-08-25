@@ -1,10 +1,8 @@
 import React from 'react';
 import './Question.css';
 import { Link } from 'react-router-dom';
-import userImg from '../../../images/userImg.jpg';
 
 const Question = (props) => {
-    console.log(props);
     const {_id, title, description, iamges, tags, dateAndTime, userInfo} = props.question;
     return (
         <div className='question'>
