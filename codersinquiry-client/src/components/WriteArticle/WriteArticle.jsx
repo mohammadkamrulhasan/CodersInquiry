@@ -1,5 +1,7 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { UserContext } from '../../App';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 // import ReCAPTCHA from "react-google-recaptcha";
@@ -7,19 +9,27 @@ import Navbar from '../Navbar/Navbar';
 import './WriteArticle.css';
 
 const WriteArticle = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
-    const onSubmit = (data) => {
-        console.log(data);
-    };
-
-    function onChange(value) {
-        console.log('Captcha value:', value);
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+    const { register, handleSubmit, formState: { errors } } = useForm(); // react-hook-form
+    const [imageURL, setImageURL] = useState(null);
+    const handleUploadFile = event => {
+        const imageData = new FormData();
+        imageData.set('key', 'a2eee1479c4be326718537942be70d23');
+        imageData.append('image', event.target.files[0]);
+        axios.post('https://api.imgbb.com/1/upload', imageData)
+            .then(response => setImageURL(response.data.data.display_url))
+            .catch(error => console.log(error));
     }
-
+    const onSubmit = data => {
+        const newQuestionData = { title: data.title, description: data.description, tags: [ data.tags ], imageURL: [ imageURL ], answer: [ data.answer], vote: 0, answer: 0, views: 0, dateAndTime: new Date(), userInfo: loggedInUser };
+        console.log(newQuestionData);
+        fetch('http://localhost:5000/addArticle', {
+            method: 'POST', 
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newQuestionData)
+        })
+        .then(response => { if (response) alert('Article posted successfully') })
+    };
     return (
         <div className='writeArticle'>
             <Navbar />

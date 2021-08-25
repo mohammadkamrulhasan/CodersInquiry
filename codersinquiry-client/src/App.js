@@ -53,15 +53,15 @@ const App = () => {
                     <PrivateRoute path='/askQuestion'>
                         <AskQuestion />
                     </PrivateRoute>
-                    <Route path='/questionDetails'>
+                    <Route path='/questionDetails/:_id'>
                         <Navbar />
                         <QuestionDetails />
                         <Footer />
                     </Route>
-                    <Route path='/writeArticle'>
+                    <PrivateRoute path='/writeArticle'>
                         <WriteArticle />
                         {/* <Article /> */}
-                    </Route>
+                    </PrivateRoute>
                     {/* <Route path='/courses'>
                     <Navbar />
                     <Courses />

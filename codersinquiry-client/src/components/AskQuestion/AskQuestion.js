@@ -54,6 +54,7 @@ const AskQuestion = () => {
     //     console.log(newQuestionData);
     // };
 
+    // react-hook-form -> onSubmit function
     const onSubmit = data => {
         const newQuestionData = { title: data.title, description: data.description, tags: [ data.tags ], imageURL: [ imageURL ], answer: [ data.answer], vote: 0, answer: 0, views: 0, dateAndTime: new Date(), userInfo: loggedInUser };
         console.log(newQuestionData);

@@ -5,7 +5,7 @@ import userImg from '../../../images/userImg.jpg';
 
 const Question = (props) => {
     console.log(props);
-    const {title, description, iamges, tags, dateAndTime, userInfo} = props.question;
+    const {_id, title, description, iamges, tags, dateAndTime, userInfo} = props.question;
     return (
         <div className='question'>
             <div className='question__row row'>
@@ -38,7 +38,7 @@ const Question = (props) => {
                 </div>
                 <div className='question__col col-md-9'>
                     <div className='question__card'>
-                        <Link to='/questionDetails' className='question__question'>{title}</Link>
+                        <Link to={`/questionDetails/${_id}`} className='question__question'>{title}</Link>
                         <div className="question__tags">
                             <ul>
                                 <li>Beginner</li>
