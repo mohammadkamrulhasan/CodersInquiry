@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Questions.css';
 import { Link } from 'react-router-dom';
 import Question from './Question/Question';
 
 const Questions = () => {
+    const [questions, setQuestions] = useState([]);
+    useEffect(() => {
+        fetch('https://apple-shortcake-30747.herokuapp.com/books')
+            .then((res) => res.json())
+            .then((data) => {
+                setQuestions(data);
+            });
+    }, []);
     return (
         <div className='questions mb-3'>
             <div className='d-flex justify-content-between my-3'>

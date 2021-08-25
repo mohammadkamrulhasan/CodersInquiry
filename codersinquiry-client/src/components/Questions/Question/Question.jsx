@@ -38,7 +38,7 @@ const Question = () => {
                 </div>
                 <div className='question__col col-md-9'>
                     <div className='question__card'>
-                        <Link to='/questionDetail' className='question__question'>আমি প্রোগ্রামিং শিখতে চাই। প্রথমে কোন ল্যাঙ্গুয়েজ দিয়ে শুরু করা উচিত?</Link>
+                        <Link to='/questionDetails' className='question__question'>আমি প্রোগ্রামিং শিখতে চাই। প্রথমে কোন ল্যাঙ্গুয়েজ দিয়ে শুরু করা উচিত?</Link>
                         <div className="question__tags">
                             <ul>
                                 <li>Beginner</li>

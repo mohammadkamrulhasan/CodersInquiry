@@ -1,0 +1,12 @@
+[
+    { "id": 1, "name": "Martin Fowler", "citation": "", "quote": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand." },
+    { "id": 2, "name": "Linus Torvalds", "citation": "", "quote": "Talk is cheap. Show me the code." },
+    { "id": 3, "name": "Harold Abelson", "citation": "Structure and Interpretation of Computer Programs", "quote": "Programs must be written for people to read, and only incidentally for machines to execute." },
+    { "id": 4, "name": "Kent Beck", "citation": "", "quote": "I'm not a great programmer; I'm just a good programmer with great habits." },
+    { "id": 5, "name": "Steve Jobs", "citation": "", "quote": "You've baked a really lovely cake, but then you've used dog shit for frosting." },
+    { "id": 6, "name": "Chris Pine", "citation": "", "quote": "Programming isn't about what you know; it's about what you can figure out." },
+    { "id": 7, "name": "Dennis Ritchie", "citation": "", "quote": "The only way to learn a new programming language is by writing programs in it." },
+    { "id": 8, "name": "Joyce Wheeler", "citation": "", "quote": "Sometimes it's better to leave something alone, to pause, and that's very true of programming." },
+    { "id": 9, "name": "Andrew Hunt", "citation": "", "quote": "In some ways, programming is like painting. You start with a blank canvas and certain basic raw materials. You use a combination of science, art, and craft to determine what to do with them." },
+    { "id": 10, "name": "Austin Freeman", "citation": "", "quote": "Simplicity is the soul of efficiency." }
+]

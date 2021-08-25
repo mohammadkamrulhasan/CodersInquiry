@@ -1,12 +1,12 @@
 import React from 'react';
 import './Home.css';
 import Options from '../Options/Options';
-// import Main from './Main/Main';
 import Questions from '../Questions/Questions';
 import QAPieChart from '../QAPieChart/QAPieChart';
 import TopVotedQuestion from '../TopVotedQuestion/TopVotedQuestion';
 import Navbar from '../Navbar/Navbar';
 import Banner from '../Banner/Banner';
+import Quotes from '../Quotes/Quotes';
 
 const Home = () => {
     return (
@@ -25,6 +25,7 @@ const Home = () => {
                         <TopVotedQuestion />
                     </div>
                 </div>
+                <Quotes />
             </div>
         </div>
     );

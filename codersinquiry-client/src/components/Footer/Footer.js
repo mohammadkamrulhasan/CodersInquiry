@@ -60,11 +60,6 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href='#' className='footer__colListItem'>
-                                    Nurul Absar
-                                </a>
-                            </li>
-                            <li>
-                                <a href='#' className='footer__colListItem'>
                                     Monsur Alam Rana
                                 </a>
                             </li>
