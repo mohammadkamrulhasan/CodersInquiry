@@ -1,6 +1,6 @@
 import React from 'react';
 import './Answer.css';
-import authorImg from '../../../images/question_author.jpg';
+import authorImg from '../../../../../images/question_author.jpg';
 import { Link } from 'react-router-dom';
 import { BsCaretDownFill, BsCaretUpFill } from 'react-icons/bs';
 

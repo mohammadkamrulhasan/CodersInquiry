@@ -5,27 +5,13 @@ import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { UserContext } from '../../App';
-// import ReCAPTCHA from "react-google-recaptcha";
 
 const AskQuestion = () => {
-    const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext);  // context-api
     const { register, handleSubmit, formState: { errors } } = useForm(); // react-hook-form
-    const [imageURL, setImageURL] = useState(null); // imgbb
+    const [imageURL, setImageURL] = useState(null); // state for upload image
 
-    // const [file, setFile] = useState('');
-    // let base64String = '';
-    // const handleFileChange = () => {
-    //     var file = document.querySelector('input[type=file]')['files'][0];
-    //     var reader = new FileReader();
-    //     console.log('next');
-    //     reader.onload = function () {
-    //         base64String = reader.result.replace('data:', '').replace(/^.+,/, '');
-    //         // console.log(base64String);
-    //         setFile(base64String);
-    //     };
-    //     reader.readAsDataURL(file);
-    // }
-
+    // upload image -> imgbb
     const handleUploadFile = event => {
         const imageData = new FormData();
         imageData.set('key', 'a2eee1479c4be326718537942be70d23');
@@ -35,28 +21,9 @@ const AskQuestion = () => {
             .catch(error => console.log(error));
     }
 
-    // const onSubmit = (data) => {
-    //     const { title, description, tags } = data;
-    //     const newQuestionData = { title, description, tags };
-    //     fetch('http://localhost:5000/addQuestion', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             Accept: 'application/json, text/plain, */*',
-    //         },
-    //         body: JSON.stringify(newQuestionData),
-    //     })
-    //         .then((res) => res.json())
-    //         .then((success) => {
-    //             console.log(success);
-    //             alert('successfully entry');
-    //         });
-    //     console.log(newQuestionData);
-    // };
-
-    // react-hook-form -> onSubmit function
+    // onSubmit function -> react-hook-form
     const onSubmit = data => {
-        const newQuestionData = { title: data.title, description: data.description, tags: [ data.tags ], imageURL: [ imageURL ], answer: [ data.answer], vote: 0, answer: 0, views: 0, dateAndTime: new Date(), userInfo: loggedInUser };
+        const newQuestionData = { title: data.title, description: data.description, tags: [ data.tags ], imageURL: [ imageURL ], votes: 0, views: 0, dateAndTime: new Date(), userInfo: loggedInUser };
         console.log(newQuestionData);
         fetch('http://localhost:5000/addQuestion', {
             method: 'POST', 
@@ -75,6 +42,7 @@ const AskQuestion = () => {
                 </h2>
                 <div className='row my-3'>
                     <div className='col-md-9 mb-3'>
+                        {/* ask question form */}
                         <form onSubmit={handleSubmit(onSubmit)} className='card p-3'>
                             <div className='mb-3'>
                                 <label for='askQuestionTitle' className='form-label'>
@@ -107,6 +75,7 @@ const AskQuestion = () => {
                                 Post your Question
                             </button>
                         </form>
+                        {/* end ask question form */}
                     </div>
                     <div className='col-md-3 mb-3'>
                         <div className='card p-3'>

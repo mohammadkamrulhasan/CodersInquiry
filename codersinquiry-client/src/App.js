@@ -12,7 +12,7 @@ import AskQuestion from './components/AskQuestion/AskQuestion';
 // import CourseDetails from './components/Courses/CourseDetails';
 import Footer from './components/Footer/Footer';
 import Questions from './components/Questions/Questions';
-import QuestionDetails from './components/QuestionDetails/QuestionDetails';
+import QuestionDetails from './components/Questions/Question/QuestionDetails/QuestionDetails';
 import Article from './components/Article/Article';
 import WriteArticle from './components/WriteArticle/WriteArticle';
 import Authentication from './components/Authentication/Authentication';
@@ -36,7 +36,9 @@ const App = () => {
                         <Footer />
                     </Route>
                     <Route path='/questions'>
+                        <Navbar />
                         <Questions />
+                        <Footer />
                     </Route>
                     <Route path='/login'>
                         <Navbar />
