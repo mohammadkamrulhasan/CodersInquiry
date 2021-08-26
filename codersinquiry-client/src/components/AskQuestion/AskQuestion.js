@@ -7,30 +7,36 @@ import Footer from '../Footer/Footer';
 import { UserContext } from '../../App';
 
 const AskQuestion = () => {
-    const { loggedInUser, setLoggedInUser } = useContext(UserContext);  // context-api
-    const { register, handleSubmit, formState: { errors } } = useForm(); // react-hook-form
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext); // context-api
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm(); // react-hook-form
     const [imageURL, setImageURL] = useState(null); // state for upload image
 
     // upload image -> imgbb
-    const handleUploadFile = event => {
+    const handleUploadFile = (event) => {
         const imageData = new FormData();
         imageData.set('key', 'a2eee1479c4be326718537942be70d23');
         imageData.append('image', event.target.files[0]);
-        axios.post('https://api.imgbb.com/1/upload', imageData)
-            .then(response => setImageURL(response.data.data.display_url))
-            .catch(error => console.log(error));
-    }
+        axios
+            .post('https://api.imgbb.com/1/upload', imageData)
+            .then((response) => setImageURL(response.data.data.display_url))
+            .catch((error) => console.log(error));
+    };
 
     // onSubmit function -> react-hook-form
-    const onSubmit = data => {
-        const newQuestionData = { title: data.title, description: data.description, tags: [ data.tags ], imageURL: [ imageURL ], votes: 0, views: 0, dateAndTime: new Date(), userInfo: loggedInUser };
+    const onSubmit = (data) => {
+        const newQuestionData = { title: data.title, description: data.description, tags: [data.tags], imageURL: [imageURL], votes: 0, views: 0, dateAndTime: new Date(), userInfo: loggedInUser };
         console.log(newQuestionData);
-        fetch('http://localhost:5000/addQuestion', {
-            method: 'POST', 
+        fetch('https://fierce-hollows-24915.herokuapp.com/addQuestion', {
+            method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(newQuestionData)
-        })
-        .then(response => { if (response) alert('Question added successfully') })
+            body: JSON.stringify(newQuestionData),
+        }).then((response) => {
+            if (response) alert('Question added successfully');
+        });
     };
 
     return (

@@ -6,7 +6,7 @@ import Question from './Question/Question';
 const Questions = () => {
     const [questions, setQuestions] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/questions')
+        fetch('https://fierce-hollows-24915.herokuapp.com/questions')
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
