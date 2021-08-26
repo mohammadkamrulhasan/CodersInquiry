@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './QuestionDetails.css';
 import Answer from './Answer/Answer';
 import { Link, useParams } from 'react-router-dom';
 import { BsCaretDownFill, BsCaretUpFill } from 'react-icons/bs';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { UserContext } from '../../../../App';
 
 const QuestionDetails = () => {
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext);  // context-api
     const { _id } = useParams();
     const [question, setQuestion] = useState({});
     const {
@@ -21,25 +24,26 @@ const QuestionDetails = () => {
             .then((data) => {
                 const questionDetails = data.filter((question) => _id == question._id);
                 setQuestion(questionDetails[0]);
+                console.log(questionDetails[0]);
             });
     }, [_id]);
+    console.log(question);
     const onSubmit = (data) => {
         console.log(data);
-        // add answer to the answer list
-        const answers = question.answers;
-        const newAnswers = answers.concat([data.answer]);
-        const newQuestion = {
-            ...question,
-            answers: newAnswers,
+        const answerUser = {
+            name: loggedInUser.name,
+            photo: loggedInUser.photo,
+            uniqueId: loggedInUser.uid,
         };
-        const url = `http://localhost:5000/addAnswer/${_id}`;
-        fetch(url, {
-            method: 'PATCH',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(newQuestion),
-        }).then((response) => {
-            if (response) alert('Answer added successfully');
-        });
+        const newAnswer = {answerUser, answer: data.answer, dateAndTime: new Date()};
+        const url = `http://localhost:5000/questions/${_id}`;
+        axios.patch(url, newAnswer)
+            .then((response) => {
+                if (response) alert('Answer added successfully')
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
     return (
         <div className='questionDetails container mt-3'>
@@ -81,7 +85,7 @@ const QuestionDetails = () => {
             <Answer />
             <form onSubmit={handleSubmit(onSubmit)} className='givenAnswer my-3'>
                 <div className='mb-3'>
-                    <label for='inputAnswer' className='form-label'>
+                    <label htmlFor='inputAnswer' className='form-label'>
                         উত্তর প্রদান করুন
                     </label>
                     <textarea className='form-control' id='inputAnswer' rows='3' placeholder='আপনার উত্তর প্রদান করুন' {...register('answer', { required: true })}></textarea>
