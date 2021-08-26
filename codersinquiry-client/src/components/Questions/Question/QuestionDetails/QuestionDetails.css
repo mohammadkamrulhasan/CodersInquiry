@@ -36,3 +36,13 @@
     color: #fff;
     background-color: #47badd;
 }
+
+.givenAnswer__btn {
+    background-color: #4361ee;
+    color: #fff;
+}
+
+.givenAnswer__btn:hover {
+    color: #fff;
+    background-color: #3f37c9;
+}
