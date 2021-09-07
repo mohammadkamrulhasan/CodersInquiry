@@ -8,7 +8,7 @@ import axios from 'axios';
 import { UserContext } from '../../../../App';
 
 const QuestionDetails = () => {
-    const { loggedInUser, setLoggedInUser } = useContext(UserContext);  // context-api
+    const { loggedInUser, setLoggedInUser } = useContext(UserContext); // context-api
     const { _id } = useParams();
     const [question, setQuestion] = useState({});
     const {
@@ -18,7 +18,7 @@ const QuestionDetails = () => {
     } = useForm();
     const { title, description, iamges, tags, answers, dateAndTime, userInfo } = question;
     useEffect(() => {
-        const url = 'http://localhost:5000/questions';
+        const url = 'https://fierce-hollows-24915.herokuapp.com/questions';
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
@@ -35,11 +35,12 @@ const QuestionDetails = () => {
             photo: loggedInUser.photo,
             uniqueId: loggedInUser.uid,
         };
-        const newAnswer = {answerUser, answer: data.answer, dateAndTime: new Date()};
-        const url = `http://localhost:5000/questions/${_id}`;
-        axios.patch(url, newAnswer)
+        const newAnswer = { answerUser, answer: data.answer, dateAndTime: new Date() };
+        const url = `https://fierce-hollows-24915.herokuapp.com/questions/${_id}`;
+        axios
+            .patch(url, newAnswer)
             .then((response) => {
-                if (response) alert('Answer added successfully')
+                if (response) alert('Answer added successfully');
             })
             .catch((error) => {
                 console.log(error);
